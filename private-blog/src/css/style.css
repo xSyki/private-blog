@@ -55,7 +55,7 @@ html {
   border-radius: 20px;
 }
 
-.form {
+.login__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,7 +65,7 @@ html {
           flex-direction: column;
 }
 
-.input {
+.login__login-input {
   background-color: var(--sub1-bg-color);
   border: none;
   margin: 10px;
@@ -73,10 +73,124 @@ html {
   font-size: 1.5rem;
 }
 
-.button {
+.login__password-input {
+  background-color: var(--sub1-bg-color);
+  border: none;
+  margin: 10px;
+  padding: 20px 10px;
+  font-size: 1.5rem;
+}
+
+.login__submit-button {
   background-color: var(--accessrioes-color);
   font-size: 1.5rem;
   padding: 10px 20px 10px 20px;
   margin: 10px;
+}
+
+.blog-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--sub3-bg-color);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.blog-form__content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: var(--sub1-bg-color);
+  max-height: 300px;
+  min-height: 100px;
+  height: 20vh;
+  min-width: 150px;
+  max-width: 500px;
+  width: 50vw;
+  border-radius: 5px;
+}
+
+.blog-form__content-input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  margin: 10px;
+  font-size: 1rem;
+  margin: 10px;
+  resize: none;
+}
+
+.blog-form__content-letter-lenght {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  display: inline;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  margin: 3px;
+}
+
+.blog-form__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0px 0px 0px;
+  width: 100%;
+}
+
+.blog-form__attachments {
+  justify-self: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.blog-form__photo {
+  margin: 0px 5px 0px 5px;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+}
+
+.blog-form__audio {
+  margin: 0px 5px 0px 5px;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+}
+
+.blog-form__submit-button {
+  justify-self: flex-end;
+  background-color: var(--accessrioes-color);
+  font-size: 1.5rem;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=style.css.map */

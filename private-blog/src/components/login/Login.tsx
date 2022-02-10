@@ -21,10 +21,10 @@ const Login = () => {
         <>
             <div className='app__login login'>
                 <h1 className='login__title'>Login</h1>
-                <form action="" className='login__form form'>
-                    <input className='form__login input' type="text" placeholder="Login" value={login} onChange={handleLogin} />
-                    <input className='form__password input' type="password" placeholder="Password" value={password} onChange={handlePassword} />
-                    <button className='form__submit button' type='submit' onClick={handleSubmit}>
+                <form action="" className='login__form'>
+                    <input className='login__login-input' type="text" placeholder="Login" value={login} onChange={handleLogin} />
+                    <input className='login__password-input' type="password" placeholder="Password" value={password} onChange={handlePassword} />
+                    <button className='login__submit-button' type='submit' onClick={handleSubmit}>
                         Login
                     </button>
                 </form>

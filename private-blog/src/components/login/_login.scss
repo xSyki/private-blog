@@ -8,4 +8,32 @@
 
     padding: 30px;
     border-radius: 20px;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__login-input {
+        background-color: var(--sub1-bg-color);
+        border: none;
+        margin: 10px;
+        padding: 20px 10px;
+        font-size: 1.5rem;
+    }
+
+    &__password-input {
+        background-color: var(--sub1-bg-color);
+        border: none;
+        margin: 10px;
+        padding: 20px 10px;
+        font-size: 1.5rem;
+    }
+
+    &__submit-button {
+        background-color: var(--accessrioes-color);
+        font-size: 1.5rem;
+        padding: 10px 20px 10px 20px;
+        margin: 10px;
+    }
 }
