@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTimes, FaSearch } from 'react-icons/fa';
 import testBlogPosts from './test-blog-posts';
 
 const Blogs = () => {
 
-    const blogPosts = useState(testBlogPosts);
+    const [blogPosts, setBlogPosts] = useState(testBlogPosts);
+
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+
+    useEffect(() => {
+        const nowDate = new Date();
+        setEndDate(String(nowDate.toISOString()).substring(0, 10))
+        const defaultOffset = (24 * 60 * 60 * 1000) * 7;
+        const endDateWithOffset = nowDate.setTime(nowDate.getTime() - defaultOffset);
+        const endDateGot = new Date(endDateWithOffset);
+        setStartDate(String(endDateGot.toISOString()).substring(0, 10));
+    }
+        , [])
+
+    const handleStartDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setStartDate(event.target.value)
+    }
+
+    const handleEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEndDate(event.target.value)
+    }
 
     const handleEditBlog = (id: number) => {
         console.log(`Edit ${id}`);
@@ -15,7 +36,7 @@ const Blogs = () => {
 
     const blogPostsRender = () => {
         return (
-            blogPosts[0].map(blogPost => {
+            blogPosts.map(blogPost => {
                 return (
                     <>
                         <div className='blog-posts__post blog-post' key={blogPost.id}>
@@ -39,8 +60,8 @@ const Blogs = () => {
                     <input type="text" className='options__text-input' />
                 </label>
                 <div className='options__date-picker'>
-                    <input type="date" className='options__date-input' />
-                    <input type="date" className='options__date-input' />
+                    <input type="date" className='options__date-input' value={startDate} onChange={(event) => handleStartDate(event)} />
+                    <input type="date" className='options__date-input' value={endDate} onChange={handleEndDate} />
                 </div>
             </div>
             <div className='blog-posts'>
