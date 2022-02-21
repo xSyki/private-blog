@@ -6,7 +6,7 @@
 
     background-color: var(--sub3-bg-color);
 
-    padding: 30px;
+    padding: 20px 20px 10px 20px;
     border-radius: 20px;
 
     &__content {
@@ -24,6 +24,8 @@
         width: 50vw;
 
         border-radius: 5px;
+
+        margin: 0px 0px 5px 0px;
     }
 
     &__content-input {
@@ -55,7 +57,7 @@
         flex-direction: row;
         align-items: center;
 
-        margin: 10px 0px 0px 0px;
+        margin: 5px 0px 0px 0px;
 
         width: 100%;
     }
@@ -71,6 +73,7 @@
         font-size: 2rem;
         background-color: transparent;
         border: none;
+        cursor: pointer;
     }
 
     &__audio {
@@ -79,15 +82,27 @@
         font-size: 2rem;
         background-color: transparent;
         border: none;
+        cursor: pointer;
     }
 
     &__submit-button {
         justify-self: flex-end;
-        background-color: var(--accessrioes-color);
+        background-color: var(--accessories-color);
         font-size: 1.5rem;
         padding: 10px 20px 10px 20px;
 
         border: none;
         border-radius: 10px;
+
+        cursor: pointer;
+    }
+
+    &__submit-button:hover {
+        background-color: var(--darner-accessories-color);
+    }
+
+    &__submit-button:active {
+        background-color: var(--dark-accessories-color);
+        box-shadow: inset 0px 0px 5px #000000;
     }
 }

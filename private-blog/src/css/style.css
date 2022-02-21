@@ -16,7 +16,9 @@ html {
   --sub1-bg-color: #1F1F1F;
   --sub2-bg-color: #1D1D1D;
   --sub3-bg-color: #121212;
-  --accessrioes-color: #BB86FC;
+  --accessories-color: #BB86FC;
+  --darner-accessories-color: #9e71d4;
+  --dark-accessories-color: rgb(117, 84, 158);
   --success-color: #00DAC6;
   --font-color: #E5E5E5;
 }
@@ -27,6 +29,10 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -34,6 +40,138 @@ html {
       -ms-flex-align: center;
           align-items: center;
   background-color: var(--main-bg-color);
+}
+
+#menuToggle {
+  display: block;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: tomato;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 1;
+  -webkit-transform-origin: 4px 0px;
+          transform-origin: 4px 0px;
+  -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menuToggle span:first-child {
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  -webkit-transform: rotate(45deg) translate(-2px, -1px);
+          transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+          transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  -webkit-transform: rotate(-45deg) translate(0, -1px);
+          transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul {
+  -webkit-transform: none;
+          transform: none;
 }
 
 .login {
@@ -103,7 +241,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   background-color: var(--sub3-bg-color);
-  padding: 30px;
+  padding: 20px 20px 10px 20px;
   border-radius: 20px;
 }
 
@@ -120,6 +258,7 @@ html {
   max-width: 500px;
   width: 50vw;
   border-radius: 5px;
+  margin: 0px 0px 5px 0px;
 }
 
 .blog-form__content-input {
@@ -156,7 +295,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
   width: 100%;
 }
 
@@ -174,6 +313,7 @@ html {
   font-size: 2rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .blog-form__audio {
@@ -183,14 +323,209 @@ html {
   font-size: 2rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .blog-form__submit-button {
   justify-self: flex-end;
-  background-color: var(--accessrioes-color);
+  background-color: var(--accessories-color);
   font-size: 1.5rem;
   padding: 10px 20px 10px 20px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.blog-form__submit-button:hover {
+  background-color: var(--darner-accessories-color);
+}
+
+.blog-form__submit-button:active {
+  background-color: var(--dark-accessories-color);
+  -webkit-box-shadow: inset 0px 0px 5px #000000;
+          box-shadow: inset 0px 0px 5px #000000;
+}
+
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+}
+
+.options__search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--sub1-bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  width: 300px;
+}
+
+.options__text-input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.options__date-picker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 300px;
+}
+
+.options__date-input {
+  margin-top: 1rem;
+  background: var(--sub1-bg-color);
+  border: none;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}
+
+.options__date-input::-webkit-datetime-edit-fields-wrapper {
+  background: transparent;
+  padding: 0.5rem;
+}
+
+.options__date-input::-webkit-datetime-edit-text {
+  color: red;
+  padding: 0 0.3em;
+}
+
+.options__date-input::-webkit-datetime-edit-month-field {
+  color: white;
+}
+
+.options__date-input::-webkit-datetime-edit-day-field {
+  color: white;
+}
+
+.options__date-input::-webkit-datetime-edit-year-field {
+  color: white;
+}
+
+.options__date-input::-webkit-calendar-picker-indicator {
+  background-color: var(--sub1-bg-color);
+  margin: 0px 5px 0px 5px;
+}
+
+.blog-posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: 100vh;
+  max-width: 800px;
+  overflow-y: scroll;
+}
+
+.blog-posts::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0.7rem;
+}
+
+.blog-posts::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.blog-posts::-webkit-scrollbar-thumb {
+  background-color: var(--sub1-bg-color);
+  border-radius: 1rem;
+}
+
+.blog-posts::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sub3-bg-color);
+}
+
+.blog-post {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: var(--sub1-bg-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.blog-post__date {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-weight: bold;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.blog-post__controls {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  margin: 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.blog-post__edit {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.blog-post__delete {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.blog-post__content {
+  margin-top: 1rem;
+}
+
+.blog-post__audio {
+  margin-top: 1rem;
+}
+
+.blog-post__photo {
+  margin-top: 1rem;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
