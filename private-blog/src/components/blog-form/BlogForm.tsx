@@ -10,6 +10,10 @@ const BlogForm = () => {
         setContent(event.target.value)
     }
 
+    const handlePost = () => {
+        setContent('');
+    }
+
     useEffect(() => {
         setLetterLenght(Array.from(content).length);
 
@@ -31,7 +35,7 @@ const BlogForm = () => {
                             <FaMicrophone />
                         </button>
                     </div>
-                    <button className='blog-form__submit-button' type='submit'>Post</button>
+                    <button className='blog-form__submit-button' type='submit' onClick={handlePost}>Post</button>
                 </div>
             </div>
         </>

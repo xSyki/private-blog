@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTimes, FaSearch } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
 import testBlogPosts from './test-blog-posts';
 
 const Blogs = () => {
+
+    const urlParams = useParams();
+    console.log(urlParams);
 
     const [blogPosts, setBlogPosts] = useState(testBlogPosts);
 
@@ -16,6 +20,8 @@ const Blogs = () => {
         const endDateWithOffset = nowDate.setTime(nowDate.getTime() - defaultOffset);
         const endDateGot = new Date(endDateWithOffset);
         setStartDate(String(endDateGot.toISOString()).substring(0, 10));
+
+        urlParams.searchParam && setSearchInputValue(urlParams.searchParam);
     }
         , [])
 
@@ -32,6 +38,12 @@ const Blogs = () => {
     }
     const handleDeleteBlog = (id: number) => {
         console.log(`Delete ${id}`);
+    }
+
+    const [searchInputValue, setSearchInputValue] = useState('');
+
+    const handleSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInputValue(event.target.value);
     }
 
     const blogPostsRender = () => {
@@ -57,7 +69,7 @@ const Blogs = () => {
             <div className='options'>
                 <label className='options__search-bar'>
                     <FaSearch />
-                    <input type="text" className='options__text-input' />
+                    <input type="text" className='options__text-input' value={searchInputValue} onChange={(event) => handleSearchBar} />
                 </label>
                 <div className='options__date-picker'>
                     <input type="date" className='options__date-input' value={startDate} onChange={(event) => handleStartDate(event)} />

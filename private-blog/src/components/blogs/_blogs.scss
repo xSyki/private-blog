@@ -39,7 +39,7 @@
         &::-webkit-datetime-edit-fields-wrapper {
             background: transparent;
             padding: 0.5rem;
-            margin-left: 10px;
+            margin-left: auto;
         }
 
         &::-webkit-datetime-edit-text {
@@ -60,9 +60,9 @@
         }
 
         &::-webkit-calendar-picker-indicator {
-            background-color: var(--sub1-bg-color);
+            background-color: transparent;
             margin: 0px 5px 0px 5px;
-
+            filter: invert(1);
         }
     }
 }

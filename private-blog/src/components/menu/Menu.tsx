@@ -14,6 +14,7 @@ const Menu = () => {
                     <ul id="menu">
                         <Link to="/"> <a><li>Home</li></a> </Link>
                         <Link to="/blog"><a><li>Blogs</li></a> </Link>
+                        <Link to="/login"><a><li>Sign in</li></a> </Link>
                     </ul>
                 </div>
             </nav>

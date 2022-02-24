@@ -118,7 +118,7 @@ html {
   opacity: 1;
   -webkit-transform: rotate(45deg) translate(-2px, -1px);
           transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: #cdcdcd;
 }
 
 /*
@@ -203,12 +203,17 @@ html {
           flex-direction: column;
 }
 
+.login__title {
+  margin-bottom: 10px;
+}
+
 .login__login-input {
   background-color: var(--sub1-bg-color);
   border: none;
   margin: 10px;
   padding: 20px 10px;
   font-size: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .login__password-input {
@@ -217,13 +222,96 @@ html {
   margin: 10px;
   padding: 20px 10px;
   font-size: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .login__submit-button {
-  background-color: var(--accessrioes-color);
+  background-color: var(--accessories-color);
   font-size: 1.5rem;
   padding: 10px 20px 10px 20px;
   margin: 10px;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.login__submit-button:active {
+  background-color: var(--dark-accessories-color);
+  -webkit-box-shadow: inset 0px 0px 5px #000000;
+          box-shadow: inset 0px 0px 5px #000000;
+}
+
+.login__sub-text {
+  color: #868686;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--sub3-bg-color);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.login__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login__title {
+  margin-bottom: 10px;
+}
+
+.login__login-input {
+  background-color: var(--sub1-bg-color);
+  border: none;
+  margin: 10px;
+  padding: 20px 10px;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.login__password-input {
+  background-color: var(--sub1-bg-color);
+  border: none;
+  margin: 10px;
+  padding: 20px 10px;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.login__submit-button {
+  background-color: var(--accessories-color);
+  font-size: 1.5rem;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.login__submit-button:active {
+  background-color: var(--dark-accessories-color);
+  -webkit-box-shadow: inset 0px 0px 5px #000000;
+          box-shadow: inset 0px 0px 5px #000000;
+}
+
+.login__sub-text {
+  color: #868686;
 }
 
 .blog-form {
@@ -406,7 +494,7 @@ html {
 .options__date-input::-webkit-datetime-edit-fields-wrapper {
   background: transparent;
   padding: 0.5rem;
-  margin-left: 10px;
+  margin-left: auto;
 }
 
 .options__date-input::-webkit-datetime-edit-text {
@@ -427,8 +515,10 @@ html {
 }
 
 .options__date-input::-webkit-calendar-picker-indicator {
-  background-color: var(--sub1-bg-color);
+  background-color: transparent;
   margin: 0px 5px 0px 5px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 
 .blog-posts {

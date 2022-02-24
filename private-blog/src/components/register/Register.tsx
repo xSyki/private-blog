@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Register = () => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -17,26 +17,26 @@ const Login = () => {
 
     const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/users/login', { login, password })
-            .then(({ data }) => console.log(data))
+        axios.post('http://localhost:3000/users', { login, password })
+            .then(res => console.log(res.data))
             .catch(err => console.log(err));
     }
 
     return (
         <>
             <div className='app__login login'>
-                <h1 className='login__title'>Login</h1>
+                <h1 className='login__title'>Register</h1>
                 <form action="" className='login__form'>
                     <input className='login__login-input' type="text" placeholder="Login" value={login} onChange={handleLogin} />
                     <input className='login__password-input' type="password" placeholder="Password" value={password} onChange={handlePassword} />
                     <button className='login__submit-button' type='submit' onClick={handleSubmit}>
-                        Login
+                        Register
                     </button>
-                    <p className='login__sub-text'>Don't have an Account? <Link to="/register">Register!</Link></p>
+                    <p className='login__sub-text'>Have an Account? <Link to="/login">Login!</Link></p>
                 </form>
             </div>
         </>
     );
 }
 
-export default Login;
+export default Register;
