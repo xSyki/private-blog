@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTimes, FaSearch } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import testBlogPosts from './test-blog-posts';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Blogs = () => {
 
@@ -12,6 +14,14 @@ const Blogs = () => {
 
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+
+    const { user } = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    if (!user) {
+        navigate("/login")
+    }
 
     useEffect(() => {
         const nowDate = new Date();
@@ -25,24 +35,24 @@ const Blogs = () => {
     }
         , [])
 
-    const handleStartDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleStartDate = (event) => {
         setStartDate(event.target.value)
     }
 
-    const handleEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleEndDate = (event) => {
         setEndDate(event.target.value)
     }
 
-    const handleEditBlog = (id: number) => {
+    const handleEditBlog = (id) => {
         console.log(`Edit ${id}`);
     }
-    const handleDeleteBlog = (id: number) => {
+    const handleDeleteBlog = (id) => {
         console.log(`Delete ${id}`);
     }
 
     const [searchInputValue, setSearchInputValue] = useState('');
 
-    const handleSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchBar = (event) => {
         setSearchInputValue(event.target.value);
     }
 

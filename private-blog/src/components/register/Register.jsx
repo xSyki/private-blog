@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignupUserMutation } from '../../services/appApi';
+import { useSelector } from 'react-redux';
 
 const Register = () => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [signupUser, { isLoading, data }] = useSignupUserMutation();
 
-    const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { user } = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/")
+        }
+
+    }, [])
+
+    const handleLogin = (event) => {
         setLogin(event.target.value);
     }
 
-    const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePassword = (event) => {
         setPassword(event.target.value)
     }
 
-    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/users', { login, password })
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+        signupUser({ login, password });
+    }
+
+    if (user) {
+        navigate("/")
     }
 
     return (

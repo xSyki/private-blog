@@ -4,15 +4,18 @@ import Menu from './components/menu/Menu'
 import Login from './components/login/Login'
 import BlogForm from './components/blog-form/BlogForm';
 import Blogs from './components/blogs/Blogs';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Register from './components/register/Register';
+import { useSelector } from 'react-redux';
+import PageNotFound from './components/page-not-found/PageNotFound';
 
 function App() {
+  const { user } = useSelector((state) => state.user);
+
   return (
     <>
       <div className='app'>
-        {/* <Login /> */}
-        <Menu />
+        {user && <Menu />}
         <Routes>
           <Route path='/' element={<BlogForm />} />
           <Route path='/blog' element={<Blogs />} >
@@ -20,6 +23,7 @@ function App() {
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
     </>

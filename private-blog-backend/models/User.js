@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
-const jsonwebtoken = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
     login: {
@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
 
     tokens: [],
 
-    articles: []
+    articles: [{type: mongoose.Schema.Types.ObjectId, ref: 'BlogPost'}]
 })
 
 UserSchema.pre('save', function(next){
@@ -46,10 +46,11 @@ UserSchema.methods.toJSON = function(){
 
 UserSchema.methods.generateAuthToken = async function() {
     const user = this;
-    const token = jsonwebtoken.sign({id: user._id.toString()}, 'appSecret')
+    const token = jwt.sign({id: user._id.toString()}, 'appSecret')
     user.tokens = user.tokens.concat({token});
     await user.save();
-    return;
+
+    return token;
 }
 
 UserSchema.statics.findByCredentails = async function(login, password) {

@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { FaPhotoVideo, FaMicrophone } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const BlogForm = () => {
 
     const [content, setContent] = useState("");
     const [letterLength, setLetterLenght] = useState(0);
 
-    const handleContent = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { user } = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login")
+        }
+    }, [])
+
+    if (!user) {
+        navigate("/login")
+    }
+
+    const handleContent = (event) => {
         setContent(event.target.value)
     }
 

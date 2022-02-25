@@ -344,7 +344,7 @@ html {
   height: 20vh;
   min-width: 150px;
   max-width: 500px;
-  width: 50vw;
+  width: 80vw;
   border-radius: 5px;
   margin: 0px 0px 5px 0px;
 }
@@ -618,5 +618,9 @@ html {
 .blog-post__photo {
   margin-top: 1rem;
   width: 100%;
+}
+
+.page-not-found {
+  font-size: 10vh;
 }
 /*# sourceMappingURL=style.css.map */

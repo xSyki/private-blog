@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useLoginUserMutation } from '../../services/appApi';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [loginUser, { isLoading, data }] = useLoginUserMutation();
 
-    const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { user } = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/")
+        }
+
+    }, [])
+
+    const handleLogin = (event) => {
         setLogin(event.target.value);
     }
 
-    const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePassword = (event) => {
         setPassword(event.target.value)
     }
 
-    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/users/login', { login, password })
-            .then(({ data }) => console.log(data))
-            .catch(err => console.log(err));
+        loginUser({ login, password });
+    }
+
+    if (user) {
+        navigate("/")
     }
 
     return (
