@@ -37,9 +37,38 @@ export const appApi = createApi({
                 method: 'DELETE',
             }),
         }),
+
+        createPost: builder.mutation({
+            query: (article) => ({
+                url: '/posts',
+                method: "POST",
+                body: article
+            })
+        }),
+
+        getAllPosts: builder.mutation({
+            query: () => ({
+                url: '/posts',
+            })
+        }),
+        deletePost: builder.mutation({
+            query: (id) => ({
+                url: '/posts',
+                method: 'DELETE',
+                body: id
+            })
+        }),
+
+        editPost: builder.mutation({
+            query: (article) => ({
+                url: '/posts/edit',
+                method: "POST",
+                body: article
+            })
+        }),
     }),
 });
 
 export default appApi;
 
-export const { useLoginUserMutation, useSignupUserMutation, useLogoutUserMutation } = appApi;
+export const { useLoginUserMutation, useSignupUserMutation, useLogoutUserMutation, useCreatePostMutation, useGetAllPostsMutation, useDeletePostMutation, useEditPostMutation } = appApi;

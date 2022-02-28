@@ -1,0 +1,116 @@
+.blog-post {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--sub1-bg-color);
+
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem;
+
+    &__date {
+        align-self: flex-start;
+        font-weight: bold;
+        flex-grow: 1;
+    }
+
+    &__controls {
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        margin: 1rem;
+        display: flex;
+    }
+
+    &__edit {
+        background-color: transparent;
+        border: none;
+
+        font-size: 1.5rem;
+
+        color: white;
+
+        cursor: pointer;
+    }
+
+    &__delete {
+        background-color: transparent;
+        border: none;
+
+        font-size: 1.5rem;
+
+        cursor: pointer;
+    }
+
+    &__content {
+        margin-top: 1rem;
+    }
+
+    &__edit {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__text-edit {
+        width: 100%;
+        position: relative;
+    }
+
+    &__edit-input {
+        background-color: transparent;
+        font-size: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+        resize: none;
+        overflow: visible;
+        max-height: 300px;
+        min-height: 100px;
+        height: 20vh;
+    }
+
+    &__content-letter-lenght {
+        position: absolute;
+        right: 0%;
+        bottom: 0%;
+
+        display: inline;
+        flex-grow: 0;
+
+        margin: 3px;
+        font-size: 1rem;
+    }
+
+    &__submit-button {
+        align-self: flex-end;
+        background-color: var(--accessories-color);
+        font-size: 1.5rem;
+        padding: 10px 20px 10px 20px;
+
+        border: none;
+        border-radius: 10px;
+
+        cursor: pointer;
+    }
+
+    &__submit-button:hover {
+        background-color: var(--darner-accessories-color);
+    }
+
+    &__submit-button:active {
+        background-color: var(--dark-accessories-color);
+        box-shadow: inset 0px 0px 5px #000000;
+    }
+
+    &__audio {
+        margin-top: 1rem;
+    }
+
+    &__photo {
+        margin-top: 1rem;
+        width: 100%;
+    }
+}

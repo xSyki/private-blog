@@ -9,11 +9,7 @@ const Menu = () => {
     const [logoutUser, { isLoading }] = useLogoutUserMutation()
 
     const handleLogout = () => {
-        logoutUser().then(({ error }) => {
-            if (!error) {
-                console.log("Nice");
-            }
-        })
+        logoutUser();
     }
 
     return (

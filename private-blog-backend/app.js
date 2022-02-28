@@ -7,6 +7,7 @@ require('./connection');
 var cors = require('cors');
 
 var usersRouter = require('./routes/users');
+var postsRouter = require('./routes/postsRoutes')
 
 var app = express();
 app.use(cors())
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

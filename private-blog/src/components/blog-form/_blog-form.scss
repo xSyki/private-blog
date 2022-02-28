@@ -76,6 +76,11 @@
         cursor: pointer;
     }
 
+    &__photo-output {
+        max-height: 300px;
+        max-width: 500px;
+    }
+
     &__audio {
         margin: 0px 5px 0px 5px;
         justify-self: left;
@@ -105,4 +110,13 @@
         background-color: var(--dark-accessories-color);
         box-shadow: inset 0px 0px 5px #000000;
     }
+
+    &__options-extra {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__photo-input {}
 }
