@@ -23,7 +23,7 @@ const Menu = () => {
                     <ul id="menu">
                         <Link to="/"> <a><li>Home</li></a> </Link>
                         <Link to="/blog"><a><li>Blogs</li></a> </Link>
-                        {user ? <a ><li onClick={handleLogout}>Logout</li></a> : <Link to="/login"><a><li>Sign in</li></a> </Link>}
+                        {user ? <a className='navigation__log'><li onClick={handleLogout}>Logout</li></a> : <Link to="/login"><a className='navigation__log'><li>Sign in</li></a> </Link>}
                     </ul>
                 </div>
             </nav>

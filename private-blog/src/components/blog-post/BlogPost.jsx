@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { FaEdit, FaTimes, FaSearch } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaEdit, FaTimes } from 'react-icons/fa';
 import { useDeletePostMutation, useEditPostMutation } from '../../services/appApi';
 
 const BlogPost = (props) => {
     const blogPost = props.blogPost;
-    const getAllPosts = props.getAllPosts;
 
     const [content, setContent] = useState(blogPost.content);
     const [isEditing, setIsEditing] = useState(false);

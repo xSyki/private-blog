@@ -42,6 +42,10 @@ html {
   background-color: var(--main-bg-color);
 }
 
+.navigation__log {
+  cursor: pointer;
+}
+
 #menuToggle {
   display: block;
   position: fixed;

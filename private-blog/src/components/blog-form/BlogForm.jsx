@@ -38,29 +38,7 @@ const BlogForm = () => {
         setContent(event.target.value);
     }
 
-    // const uploadPhoto = (e) => {
-    //     e.preventDefault();
-    //     if (!photo) return;
-    //     setPhotoUrl('');
-    //     const data = new FormData();
-    //     data.append('file', photo);
-    //     data.append('upload_preset', 'ezifnu8t');
-    //     setUploadingPhoto(true);
-    //     fetch('https://api.cloudinary.com/v1_1/dtnysbshs/image/upload', {
-    //         method: 'POST',
-    //         body: data
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             setUploadingPhoto(false);
-    //             setPhotoUrl(data.url);
-    //         }).catch(err => {
-    //             setUploadingPhoto(false);
-    //             console.log(err);
-    //         })
-    // }
-
-    const photoValidation = (e) => {
+    const uploadPhoto = (e) => {
         const file = e.target.files[0];
         if (file.size > 1048576) {
             setPhotoUrl(null);
@@ -127,10 +105,7 @@ const BlogForm = () => {
                         <>
                             <label>
                                 Photo:
-                                <input type="file" accept='image/*' className='blog-form__photo-input' onChange={photoValidation} />
-                                {/* <button onClick={uploadPhoto} disabled={uploadingPhoto || photoUrl}>
-                                    Upload
-                                </button> */}
+                                <input type="file" accept='image/*' className='blog-form__photo-input' onChange={uploadPhoto} />
                             </label>
                         </>}
                     {/* {!audioUrl && audioClicked ?

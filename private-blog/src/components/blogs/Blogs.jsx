@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaEdit, FaTimes, FaSearch } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
-import testBlogPosts from './test-blog-posts';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useGetAllPostsMutation } from '../../services/appApi';
@@ -41,14 +40,6 @@ const Blogs = () => {
     useEffect(() => {
         setBlogPosts(posts);
     }, [posts])
-
-    // useEffect(() => {
-    //     setBlogPosts(blogPosts.filter(post => {
-    //         const created_atM = new Date(post.created_at).getTime()
-    //         const startDateM = new Date(startDate).getTime();
-    //         return created_atM > startDateM;
-    //     }));
-    // }, [startDate])
 
     const handleStartDate = (event) => {
         setStartDate(event.target.value);
