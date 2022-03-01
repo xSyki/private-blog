@@ -10,7 +10,9 @@ var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/postsRoutes')
 
 var app = express();
-app.use(cors())
+app.use(cors({
+  origin: 'http://blog.syki.pl'
+}))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

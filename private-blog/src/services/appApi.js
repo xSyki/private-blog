@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const appApi = createApi({
     reducerPath: 'appApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3000/',
+        baseUrl: 'https://syki-private-blog.herokuapp.com',
         prepareHeaders: (headers, {getState}) => {
             const token = getState().user.token;
             if(token) {
