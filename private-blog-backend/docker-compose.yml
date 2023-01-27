@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  mongodb:
+    container_name: private_blog_database
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PW}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/mongo/data:/data/db
+  private_blog:
+    container_name: private_blog
+    image: node:latest
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PW: ${DB_PW}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./:/private-blog
+    working_dir: /private-blog
+    entrypoint: ["npm", "start"]
